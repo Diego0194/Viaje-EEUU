@@ -37,7 +37,7 @@
 			}
 			.activity-image {
 				display: block; /* Asegura que la imagen esté en una línea separada */
-				max-width: 100px; /* Ancho máximo de la imagen de la actividad */
+				max-width: 100%; /* Ancho máximo de la imagen de la actividad */
 				height: auto;
 			}
 			table {
@@ -48,7 +48,7 @@
 				padding: 8px;
 				text-align: left;
 				border-bottom: 1px solid #ddd;
-				width: 33.33%; /* Distribuye el ancho igualmente entre las tres columnas */
+				width: auto; /* Ajusta el ancho de las celdas automáticamente */
 				font-size: 12px;
 				vertical-align: top; /* Alinea el contenido de la celda en la parte superior */
 			}
@@ -56,9 +56,10 @@
 				width: 30%; /* Ancho de la primera columna */
 			}
 			td.image-cell {
-				text-align: left; /* Alinea la imagen a la izquierda */
+				text-align: center; /* Alinea la imagen al centro */
 			}
 		</style>
+
 	</head>
 
 	<body>
