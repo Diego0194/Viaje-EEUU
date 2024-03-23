@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Viaje a EEUU Fati y Diego</title>
+  <title>Viaje Diego Fati EEUU</title>
+  <link rel="icon" href="img/Pop.png" type="image/png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bangers&display=swap">
   <style>
         body {
             font-family: Arial, sans-serif;
@@ -30,7 +32,8 @@
             margin-bottom: 10px;
         }
         .activity-image {
-            max-width: 200px; /* Ancho máximo de la imagen de la actividad */
+            display: block; /* Asegura que la imagen esté en una línea separada */
+            max-width: 100px; /* Ancho máximo de la imagen de la actividad */
             height: auto;
         }
         table {
@@ -39,50 +42,50 @@
         }
         th, td {
             padding: 8px;
-            text-align: center;
+            text-align: left;
             border-bottom: 1px solid #ddd;
-            width: 25%; /* Distribuye el ancho igualmente entre las cuatro columnas */
-			font-size: 12px; /* Cambia el tamaño de la fuente para las celdas de la tabla */
-    }
-</style>
-
+            width: 33.33%; /* Distribuye el ancho igualmente entre las tres columnas */
+            font-size: 12px;
+            vertical-align: top; /* Alinea el contenido de la celda en la parte superior */
         }
         th:first-child, td:first-child {
-            width: 20%; /* Ancho de la primera columna */
+            width: 30%; /* Ancho de la primera columna */
+        }
+        td.image-cell {
+            text-align: left; /* Alinea la imagen a la izquierda */
         }
     </style>
-    <!-- Incluye la biblioteca de Leaflet -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
+
 <body>
     <h1>Itinerario de Viaje con Imágenes y Miniaturas de Mapa</h1>
 
     <!-- Itinerario -->
-<!-- 24 de abril -->
-<div class="day">
-    <h2>24 de abril</h2>
-    <div class="section">
-        <h3>Tarde</h3>
-        <table>
-            <tr>
-                <th>Actividad</th>
-                <th>Hora</th>
-                <th>Tiempo de Transporte</th>
-            </tr>
-            <tr>
-                <td>Llegada al Courtyard by Marriott Long Island City</td>
-                <td>17:00 - 19:00</td>
-                <td>N/A</td>
-            </tr>
-            <tr>
-                <td>Cena en un restaurante cercano</td>
-                <td>19:30 - 21:30</td>
-                <td>N/A</td>
-            </tr>
-        </table>
+    <!-- 24 de abril -->
+    <div class="day">
+        <h2>24 de abril</h2>
+        <div class="section">
+            <h3>Tarde</h3>
+            <table>
+                <tr>
+                    <th>Actividad</th>
+                    <th>Hora</th>
+                    <th>Imagen</th>
+                </tr>
+                <tr>
+                    <td>Llegada al Courtyard by Marriott Long Island City</td>
+                    <td>17:00 - 19:00</td>
+                    <td class="image-cell"><img class="activity-image" src="img/Hotel.jpg" alt="Descripción de la imagen"></td>
+                </tr>
+                <tr>
+                    <td>Cena en un restaurante cercano</td>
+                    <td>19:30 - 21:30</td>
+                    <td class="image-cell"><img class="activity-image" src="ruta_de_la_imagen" alt="Descripción de la imagen"></td>
+                </tr>
+            </table>
+        </div>
     </div>
-</div>
+
 
 <!-- 25 de abril -->
 <div class="day">
