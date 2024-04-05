@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viaje Diego Fati EEUU</title>
+    <title>Viaje a Nueva York</title>
     <link rel="icon" href="img/Pop.png" type="image/png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap">
 	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
@@ -58,6 +58,7 @@
             display: block;
             max-width: 100%;
             height: auto;
+            cursor: pointer; /* Agregamos el cursor de puntero para indicar que es clickable */
         }
         table {
             width: 100%;
@@ -77,6 +78,42 @@
         td.image-cell {
             text-align: center;
         }
+        /* Estilos de la lightbox */
+        #lightbox-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        #lightbox-image {
+            max-width: 80%;
+            max-height: 80%;
+            border: 5px solid white;
+        }
+		
+	.lightbox {
+        display: none; /* Por defecto, la lightbox estará oculta */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro semitransparente */
+        z-index: 9999; /* Asegura que la lightbox esté sobre otros elementos */
+        text-align: center;
+    }
+    
+    .lightbox-image {
+        max-width: 80%; /* Anchura máxima de la imagen */
+        max-height: 80%; /* Altura máxima de la imagen */
+        margin: auto;
+        margin-top: 5%; /* Margen superior para centrar la imagen verticalmente */
+    }
     </style>
 </head>
 <body>
@@ -112,7 +149,8 @@
                         <td><a href="comgooglemaps://?saddr=JFK+International+Airport&daddr=Courtyard+by+Marriott+Long+Island+City&directionsmode=transit" style="text-decoration: none; color: inherit;">🚇1h</a></td>
                         <td>17:00 - 19:00</td>
                         <td class="image-cell">
-                            <img class="activity-image" src="img/Hotel.jpg" alt="Hotel"/>
+                            <!-- Agregamos el evento onclick para abrir la lightbox -->
+                            <img class="activity-image" src="img/Hotel.jpg" alt="Hotel" onclick="openLightbox('img/Hotel.jpg')"/>
                         </td>
                     </tr>
                     <tr>
@@ -120,7 +158,8 @@
                         <td><a href="comgooglemaps://?saddr=Courtyard+by+Marriott+Long+Island+City&daddr=Times+Square,+Manhattan,+Nueva+York,+EE.+UU.&directionsmode=transit" style="text-decoration: none; color: inherit;">🚇15min</a></td>
                         <td>19:30 - 21:30</td>
                         <td class="image-cell">
-                            <img class="activity-image" src="img/TimesSquareNoche.jpg" alt="Times Square"/>
+                            <!-- Agregamos el evento onclick para abrir la lightbox -->
+                            <img class="activity-image" src="img/TimesSquareNoche.jpg" alt="Times Square" onclick="openLightbox('img/TimesSquareNoche.jpg')"/>
                         </td>
                     </tr>
                 </table>
@@ -144,28 +183,28 @@
 						<td>-</td>
 						<td>08:00-09:00</td>
 						<td class="image-cell">
-						<img class="activity-image" src="img/Desayuno.jpg" alt="Hotel"/>
+						<img class="activity-image" src="img/Desayuno.jpg" alt="Hotel" onclick="openLightbox('img/Desayuno.jpg')"/>
 					</tr>
 					<tr>
 						<td>Ir a Times Square para verlo de día</td>
 						<td><a href="comgooglemaps://?saddr=Courtyard+by+Marriott+Long+Island+City&daddr=Times+Square,+Manhattan,+Nueva+York,+EE.+UU.&directionsmode=transit" style="text-decoration: none; color: inherit;">🚇15min</a></td>
 						<td>10:00 - 11:00</td>
 						<td class="image-cell">
-						<img class="activity-image" src="img/TimesSquareDia.jpg" alt="Times Square"/>
+						<img class="activity-image" src="img/TimesSquareDia.jpg" alt="Times Square" onclick="openLightbox('img/TimesSquareDia.jpg')"/>
 					</tr>
 					<tr>
 						<td>Caminar por Broadway dirección Central Park</td>
 						<td><a href="comgooglemaps://?saddr=Times+Square,+Manhattan,+Nueva+York&daddr=Central+Park+Information+Kiosk+Columbus+Circle,+14+East+60th+St+%26,+W+59th+St,+New+York&dirflg=w" style="text-decoration: none; color: inherit;">🚶20min</a></td>
 						<td>10:00 - 11:00</td>
 						<td class="image-cell">
-						<img class="activity-image" src="img/Broadway.jpg" alt="Broadway"/>
+						<img class="activity-image" src="img/Broadway.jpg" alt="Broadway" onclick="openLightbox('img/Broadway.jpg')"/>
 					</tr>					
 					<tr>
 						<td>Bicis por Central Park</td>
 						<td><a href="comgooglemaps://?saddr=Museo+Americano+de+Historia+Natural,+200+Central+Park+W,+New+York&daddr=Bow+Bridge,+Central+Park&dirflg=w" style="text-decoration: none; color: inherit;">🚶10min</a></td>
 						<td>13:00 - 16:00</td>
 						<td class="image-cell">
-						<img class="activity-image" src="img/CentralParkBici.jpg" alt="Central Park"/>
+						<img class="activity-image" src="img/CentralParkBici.jpg" alt="Central Park" onclick="openLightbox('img/CentralParkBici.jpg')"/>
 					</tr>
 				</table>
 			</div>
@@ -177,35 +216,35 @@
 						<td><a href="comgooglemaps://?saddr=Cop+Cot,+E+60th+St,+New+York&daddr=Top+of+The+Rock,+Rockefeller+Plaza,+Nueva+York&dirflg=w" style="text-decoration: none; color: inherit;">🚶20min</a></td>
 						<td>16:00 - 17:00</td>
 						<td class="image-cell">
-						<img class="activity-image" src="img/5Avenida.jpg" alt="5ª Avenida"/>
+						<img class="activity-image" src="img/5Avenida.jpg" alt="5ª Avenida" onclick="openLightbox('img/5Avenida.jpg')"/>
 					</tr>
 					<tr>
 						<td>Catedral de San Patricio</td>
 						<td>-</td>
 						<td>17:00 - 17:30</td>
 						<td class="image-cell">
-						<img class="activity-image" src="img/SanPatricio.jpg" alt="San Patricio"/>
+						<img class="activity-image" src="img/SanPatricio.jpg" alt="San Patricio" onclick="openLightbox('img/SanPatricio.jpg')"/>
 					</tr>
 					<tr>
 						<td>Edificio Rockefeller</td>
 						<td>-</td>
 						<td>17:00 - 17:30</td>
 						<td class="image-cell">
-						<img class="activity-image" src="img/Rockefeller.jpg" alt="Rockefeller"/>
+						<img class="activity-image" src="img/Rockefeller.jpg" alt="Rockefeller" onclick="openLightbox('img/Rockefeller.jpg')"/>
 					</tr>
 					<tr>
 						<td>Atardecer en el mirador Top of the Rock (CityPass)</td>
 						<td>-</td>
 						<td>18:00 - 20:00</td>
 						<td class="image-cell">
-						<img class="activity-image" src="img/TopOfTheRock.jpg" alt="Top of the Rock"/>
+						<img class="activity-image" src="img/TopOfTheRock.jpg" alt="Top of the Rock" onclick="openLightbox('img/TopOfTheRock.jpg')"/>
 					</tr>
 					<tr>
 						<td>Vuelta al hotel</td>
 						<td><a href="comgooglemaps://?saddr=Top+of+The+Rock,+Rockefeller+Plaza,+Nueva+York&daddr=Courtyard+by+Marriott+Long+Island+City&directionsmode=transit" style="text-decoration: none; color: inherit;">🚇15min</a></td>
 						<td>20:30 - 21:00</td>
 						<td class="image-cell">
-						<img class="activity-image" src="img/Metro.jpg" alt="Metro"/>
+						<img class="activity-image" src="img/Metro.jpg" alt="Metro" onclick="openLightbox('img/Metro.jpg')"/>
 					</tr>
 				</table>
 			</div>
@@ -228,42 +267,42 @@
 						<td>-</td>
 						<td>08:00-09:00</td>
 						<td class="image-cell">
-						<img class="activity-image" src="img/Desayuno.jpg" alt="Hotel"/>
+						<img class="activity-image" src="img/Desayuno.jpg" alt="Hotel" onclick="openLightbox('img/Desayuno.jpg')"/>
 					</tr>
 					<tr>
 						<td>Metro al World Trade Center (Oculus)</td>
 						<td><a href="comgooglemaps://?saddr=Courtyard+by+Marriott+Long+Island+City&daddr=World+Trade+Center,+New+York,+NY+10006&directionsmode=transit" style="text-decoration: none; color: inherit;">🚇30min</a></td>
 						<td>09:30-10:00</td>
 						<td class="image-cell">
-						<img class="activity-image" src="img/Oculus.jpg" alt="Oculus"/>
+						<img class="activity-image" src="img/Oculus.jpg" alt="Oculus" onclick="openLightbox('img/Oculus.jpg')"/>
 					</tr>
 					<tr>
 						<td>Memorial 11S</td>
 						<td>-</td>
 						<td>10:00-11:00</td>
 						<td class="image-cell">
-						<img class="activity-image" src="img/Memorial11S.jpg" alt="Memorial 11S"/>
+						<img class="activity-image" src="img/Memorial11S.jpg" alt="Memorial 11S"  onclick="openLightbox('img/Memorial11S.jpg')"/>
 					</tr>
 					<tr>
 						<td>Distrito financiero</td>
 						<td>-</td>
 						<td>11:00-12:00</td>
 						<td class="image-cell">
-						<img class="activity-image" src="img/DistritoFinanciero.jpg" alt="Distrito financiero"/>
+						<img class="activity-image" src="img/DistritoFinanciero.jpg" alt="Distrito financiero" onclick="openLightbox('img/DistritoFinanciero.jpg')"/>
 					</tr>
 					<tr>
 						<td>Toro de Wall Street</td>
 						<td>-</td>
 						<td>-</td>
 						<td class="image-cell">
-						<img class="activity-image" src="img/ToroWallStreet.jpg" alt="Toro"/>
+						<img class="activity-image" src="img/ToroWallStreet.jpg" alt="Toro" onclick="openLightbox('img/Toro.jpg')"/>
 					</tr>
 					<tr>
 						<td>Estatua de la Libertad e Isla Ellis</td>
 						<td><a href="comgooglemaps://?saddr=Courtyard+by+Marriott+Long+Island+City&daddr=Statue+City+Cruises+Battery+Park,+New+York&directionsmode=transit" style="text-decoration: none; color: inherit;">🚇35min</a></td>
 						<td>12:00-15:30</td>
 						<td class="image-cell">
-						<img class="activity-image" src="img/EstatuaLibertad.jpg" alt="Estatua Libertad"/>
+						<img class="activity-image" src="img/EstatuaLibertad.jpg" alt="Estatua Libertad" onclick="openLightbox('img/EstatuaLibertad.jpg')"/>
 					</tr>
 				</table>
 			</div>
@@ -281,7 +320,7 @@
 						<td><a href="comgooglemaps://?saddr=National+September+11+Memorial+%26+Museum,+Greenwich+Street,+Nueva+York&daddr=Puente+de+Brooklyn,+New+York,+NY+10038&dirflg=w" style="text-decoration: none; color: inherit;">🚶30min</a></td>
 						<td>18:00 - 19:00</td>
 						<td class="image-cell">
-						<img class="activity-image" src="img/AtardecerHelicoptero.jpg" alt="Puente Brooklyn"/>
+						<img class="activity-image" src="img/AtardecerHelicoptero.jpg" alt="Helicoptero" onclick="openLightbox('img/AtardecerHelicoptero.jpg')"/>
 					</tr>
 				</table>
 			</div>
@@ -298,14 +337,14 @@
 						<td>-</td>
 						<td>07:00-08:00</td>
 						<td class="image-cell">
-						<img class="activity-image" src="img/Desayuno.jpg" alt="Hotel"/>
+						<img class="activity-image" src="img/Desayuno.jpg" alt="Hotel" onclick="openLightbox('img/Desayuno.jpg')"/>
 					</tr>
 					<tr>
 						<td>Tour de los contrastes</td>
 						<td><a href="comgooglemaps://?saddr=Courtyard+by+Marriott+Long+Island+City&daddr=Hotel+Riu+Plaza+New+York+Times+Square&directionsmode=transit" style="text-decoration: none; color: inherit;">🚇30min</a></td>
 						<td>09:00-13:30</td>
 						<td class="image-cell">
-						<img class="activity-image" src="img/TourContrastes.png" alt="Tour contrastes"/>
+						<img class="activity-image" src="img/TourContrastes.png" alt="Tour contrastes" onclick="openLightbox('img/TourContrastes.png')"/>
 					</tr>
 				</table>
 			</div>
@@ -317,28 +356,28 @@
 						<td><a href="comgooglemaps://?saddr=SUMMIT+One+Vanderbilt,+45+E+42nd+St,+New+York&daddr=Dumbo+-+Manhattan+Bridge+View&directionsmode=transit" style="text-decoration: none; color: inherit;">🚇20min</a></td>
 						<td>15:30-16:30</td>
 						<td class="image-cell">
-						<img class="activity-image" src="img/PuenteBrooklynDumbo.jpg" alt="DUMBO"/>
+						<img class="activity-image" src="img/PuenteBrooklynDumbo.jpg" alt="DUMBO" onclick="openLightbox('img/PuenteBrooklynDumbo.jpg')"/>
 					</tr>
 					<tr>
 						<td>Squibb Park Bridge</td>
 						<td><a href="comgooglemaps://?saddr=/Dumbo+-+Manhattan+Bridge+View&daddr=Squibb+Park+Bridge&dirflg=w" style="text-decoration: none; color: inherit;">🚶15min</a></td>
 						<td>16:45-17:30</td>
 						<td class="image-cell">
-						<img class="activity-image" src="img/Squibb.jpg" alt="Squibb"/>
+						<img class="activity-image" src="img/Squibb.jpg" alt="Squibb" onclick="openLightbox('img/Squibb.jpg')"/>
 					</tr>
 					<tr>
 						<td>Atardecer en Brooklyn Bridge Park</td>
 						<td><a href="comgooglemaps://?saddr=Squibb+Park+Bridge&daddr=Brooklyn+Bridge+Park&dirflg=w" style="text-decoration: none; color: inherit;">🚶5min</a></td>
 						<td>17:30-19:00</td>
 						<td class="image-cell">
-						<img class="activity-image" src="img/BrooklynBridgePark.jpg" alt="Brooklyn Bridge Park"/>
+						<img class="activity-image" src="img/BrooklynBridgePark.jpg" alt="Brooklyn Bridge Park" onclick="openLightbox('img/BrooklynBridgePark.jpg')"/>
 					</tr>
 					<tr>
 						<td>Vuelta al hotel</td>
 						<td><a href="comgooglemaps://?saddr=Brooklyn+Bridge+Park&daddr=Courtyard+by+Marriott+Long+Island+City&directionsmode=transit" style="text-decoration: none; color: inherit;">🚇40min</a></td>
 						<td>20:00 - 21:00</td>
 						<td class="image-cell">
-						<img class="activity-image" src="img/Metro.jpg" alt="Metro"/>
+						<img class="activity-image" src="img/Metro.jpg" alt="Metro" onclick="openLightbox('img/Metro.jpg')"/>
 					</tr>
 				</table>
 			</div>
@@ -355,7 +394,7 @@
 						<td><a href="comgooglemaps://?saddr=Courtyard+by+Marriott+Long+Island+City&daddr=Wellington+Hotel,+871+7th+Ave,+New+York&directionsmode=transit" style="text-decoration: none; color: inherit;">🚇15min</a></td>
 						<td>06:00-22:00</td>
 						<td class="image-cell">
-						<img class="activity-image" src="img/Washington.jpg" alt="Washington"/>
+						<img class="activity-image" src="img/Washington.jpg" alt="Washington" onclick="openLightbox('img/Washington.jpg')"/>
 					</tr>
 				</table>
 			</div>
@@ -372,28 +411,28 @@
 						<td><a href="comgooglemaps://?saddr=Courtyard+by+Marriott+Long+Island+City&daddr=Vessel,+20+Hudson+Yards,+New+York&directionsmode=transit" style="text-decoration: none; color: inherit;">🚇20min</a></td>
 						<td>09:00-10:00</td>
 						<td class="image-cell">
-						<img class="activity-image" src="img/Vessel.jpg" alt="Vessel"/>
+						<img class="activity-image" src="img/Vessel.jpg" alt="Vessel" onclick="openLightbox('img/Vessel.jpg')"/>
 					</tr>
 					<tr>
 						<td>Parque High Line</td>
 						<td><a href="comgooglemaps://?saddr=Vessel,+20+Hudson+Yards,+New+York&daddr=High+Line,+New+York&dirflg=w" style="text-decoration: none; color: inherit;">🚶30min</a></td>
 						<td>10:00-11:00</td>
 						<td class="image-cell">
-						<img class="activity-image" src="img/HighLine.jpg" alt="High Line"/>
+						<img class="activity-image" src="img/HighLine.jpg" alt="High Line" onclick="openLightbox('img/HighLine.jpg')"/>
 					</tr>
 					<tr>
 						<td>Pier 57 Rooftop</td>
 						<td><a href="comgooglemaps://?saddr=High+Line,+New+York&daddr=Pier+57+Rooftop+Park&dirflg=w" style="text-decoration: none; color: inherit;">🚶5min</a></td>
 						<td>11:00-12:00</td>
 						<td class="image-cell">
-						<img class="activity-image" src="img/Pier57.jpg" alt="Pier 57"/>
+						<img class="activity-image" src="img/Pier57.jpg" alt="Pier 57" onclick="openLightbox('img/Pier57.jpg')"/>
 					</tr>
 					<tr>
 						<td>Comer en Chelsea Market</td>
 						<td><a href="comgooglemaps://?saddr=Pier+57+Rooftop+Park&daddr=Chelsea+Market,+75+9th+Ave,+New+York&dirflg=w" style="text-decoration: none; color: inherit;">🚶10min</a></td>
 						<td>12:00-14:00</td>
 						<td class="image-cell">
-						<img class="activity-image" src="img/Chelsea.jpg" alt="Chelsea Market"/>
+						<img class="activity-image" src="img/Chelsea.jpg" alt="Chelsea Market" onclick="openLightbox('img/Chelsea.jpg')"/>
 					</tr>
 				</table>
 			</div>
@@ -405,7 +444,7 @@
 						<td><a href="comgooglemaps://?saddr=Chelsea+Market,+75+9th+Ave,+New+York&daddr=Graffiti+Kobra+Madre+Teresa+y+Gandhi&dirflg=w" style="text-decoration: none; color: inherit;">🚶5min</a></td>
 						<td>14:00-14:30</td>
 						<td class="image-cell">
-						<img class="activity-image" src="img/KobraTeresa.jpg" alt="Graffiti Kobra"/>
+						<img class="activity-image" src="img/KobraTeresa.jpg" alt="Graffiti Kobra" onclick="openLightbox('img/KobraTeresa.jpg')"/>
 					</tr>
 				</table>
 			</div>
@@ -474,7 +513,7 @@
 								<td><a href="comgooglemaps://?saddr=Courtyard+by+Marriott+Long+Island+City&daddr=SUMMIT+One+Vanderbilt,+45+E+42nd+St,+New+York&directionsmode=transit" style="text-decoration: none; color: inherit;">🚇20min</a></td>
 								<td>09:00-11:00</td>
 								<td class="image-cell">
-								<img class="activity-image" src="img/Summit.jpg" alt="Summit"/>
+								<img class="activity-image" src="img/Summit.jpg" alt="Summit" onclick="openLightbox('img/Summit.jpg')"/>
 							</tr>
 						</table>
 					</div>
@@ -486,14 +525,14 @@
 								<td><a href="comgooglemaps://?saddr=SUMMIT+One+Vanderbilt,+45+E+42nd+St,+New+York&daddr=Dumbo+-+Manhattan+Bridge+View&directionsmode=transit" style="text-decoration: none; color: inherit;">🚇20min</a></td>
 								<td>16:30-18:00</td>
 								<td class="image-cell">
-								<img class="activity-image" src="img/PuenteBrooklynDumbo.jpg" alt="DUMBO"/>
+								<img class="activity-image" src="img/PuenteBrooklynDumbo.jpg" alt="DUMBO" onclick="openLightbox('img/PuenteBrooklynDumbo.jpg')"/>
 							</tr>
 							<tr>
 								<td>Atardecer en el Pier 35</td>
 								<td><a href="comgooglemaps://?saddr=Dumbo+-+Manhattan+Bridge+View&daddr=Pier+35,+FDR+Dr,+New+York&directionsmode=transit" style="text-decoration: none; color: inherit;">🚇20min</a></td>
 								<td>18:30-20:00</td>
 								<td class="image-cell">
-								<img class="activity-image" src="img/Pier35.jpg" alt="Pier35"/>
+								<img class="activity-image" src="img/Pier35.jpg" alt="Pier35" onclick="openLightbox('img/Pier35.jpg')"/>
 							</tr>
 						</table>
 					</div>
@@ -562,6 +601,12 @@
 					</div>
 				</div>
 
+ <!-- Contenedor de la lightbox -->
+    <div id="lightbox-container" onclick="closeLightbox()" style="display: none;"></div>
+	<div id="lightbox" class="lightbox" onclick="this.style.display='none'">
+    <img id="lightbox-image" class="lightbox-image" src="" alt="Imagen en lightbox" />
+</div>
+
     <script>
         function toggleSection(sectionId) {
             var section = document.getElementById(sectionId);
@@ -578,10 +623,22 @@
                 day.style.display = 'block';
             });
         }
-		function openGoogleMaps() {
-			var mapId = "1RUtKoj9H7YMvoWbx9BR5-NL_Cm8G870"; // Reemplaza con el ID de tu mapa
-			window.location.href = "geo:0,0?q=+&mid=" + mapId;
-		}
+
+function openLightbox(imageSrc) {
+    var lightbox = document.getElementById('lightbox');
+    var image = document.getElementById('lightbox-image');
+    
+    // Asigna la imagen a la lightbox
+    image.src = imageSrc;
+    
+    // Muestra la lightbox
+    lightbox.style.display = 'block';
+}
+
+        function closeLightbox() {
+            const lightboxContainer = document.getElementById('lightbox-container');
+            lightboxContainer.style.display = 'none'; // Ocultamos la lightbox
+        }
     </script>
 			</body>
 		</html>
