@@ -90,7 +90,6 @@
 
     <!-- Comida -->
     <div id="comida" style="display: none;">
-        <iframe src="https://www.google.com/maps/d/embed?mid=1QmDkmYYqdZ6B7m9dVF0hzppvU6k&ehbc=2E312F" width="640" height="480"></iframe>
     </div>
 
     <!-- Itinerario -->
@@ -580,8 +579,8 @@
             });
         }
 		function openGoogleMaps() {
-        var mapUrl = "https://www.google.com/maps/d/edit?mid=1RUtKoj9H7YMvoWbx9BR5-NL_Cm8G870&usp=drive_link"; // URL del mapa en Google Drive
-        window.location.href = "comgooglemaps://?daddr=" + encodeURIComponent(mapUrl);
+			var mapId = "1RUtKoj9H7YMvoWbx9BR5-NL_Cm8G870"; // Reemplaza con el ID de tu mapa
+			window.location.href = "geo:0,0?q=+&mid=" + mapId;
 		}
     </script>
 			</body>
