@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Viaje a Nueva York</title>
-    <link rel="icon" href="img/Pop.png" type="image/png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap">
 	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
     <style>
@@ -19,33 +18,19 @@
             background-image: url('img/USA.png');
             background-size: cover;
         }
-        /* Estilo de los enlaces */
-        .navigation-link {
-            display: block; /* Para que aparezcan uno debajo del otro */
-            text-align: center;
-            text-decoration: none; /* Quitamos el subrayado de los enlaces */
-            color: black; /* Color del texto */
-            font-family: 'Dancing Script', cursive; /* Fuente del texto */
-            margin-bottom: 10px; /* Espacio entre enlaces */
-            font-size: 24px; /* Tamaño del texto */
-        }
 		
-        /* Estilo de los emojis */
-        .emoji {
-            margin-right: 5px; /* Espacio entre el emoji y el texto */
-        }
         .day {
             margin-bottom: 20px;
             background-color: #f2f2f2;
             border: 1px solid #ddd;
             padding: 10px;
-            cursor: pointer; /* Cambia el cursor a mano al pasar por encima */
         }
+		
         .section {
             margin-top: 10px;
-            display: none; /* Inicialmente oculto */
 			font-family: 'Quicksand', sans-serif; /* Cambio de fuente a Quicksand */
         }
+		
         .map-thumbnail {
             max-width: 200px;
             height: auto;
@@ -117,20 +102,9 @@
     </style>
 </head>
 <body>
-    <h1>Viaje a EEUU</h1>
-
-    <!-- Opciones de navegación -->
-    <div style="text-align: center;">
-        <a href="https://www.google.com/maps/d/edit?mid=1RUtKoj9H7YMvoWbx9BR5-NL_Cm8G870&usp=drive_link" class="navigation-link"><span class="emoji">🍔</span>Comida</a> 
-        <a href="javascript:void(0);" class="navigation-link" onclick="toggleSection('itinerario'); showItinerario()"><span class="emoji">🚇</span>Itinerario</a>
-    </div>
-
-    <!-- Comida -->
-    <div id="comida" style="display: none;">
-    </div>
-
+    <h1>Diego y Fati: Viaje a Nueva York</h1>
     <!-- Itinerario -->
-    <div id="itinerario" style="display: none;">
+    <div id="itinerario" >
 
 <!-- 24 de abril -->
         <div class="day">
@@ -608,21 +582,6 @@
 </div>
 
     <script>
-        function toggleSection(sectionId) {
-            var section = document.getElementById(sectionId);
-            if (section.style.display === 'block') {
-                section.style.display = 'none';
-            } else {
-                section.style.display = 'block';
-            }
-        }
-
-        function showItinerario() {
-            var days = document.querySelectorAll('.day .section');
-            days.forEach(function(day) {
-                day.style.display = 'block';
-            });
-        }
 
 function openLightbox(imageSrc) {
     var lightbox = document.getElementById('lightbox');
